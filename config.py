@@ -8,7 +8,10 @@ class Config:
  SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://lenovo:1234@localhost/e-blog'
 
 
- class ProdConfig(Config):
+class ProdConfig(Config):
+    
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
     pass
 
 
