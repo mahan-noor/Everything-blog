@@ -1,5 +1,7 @@
+from flask_login import UserMixin
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
+from . import login_manager
 from datetime import datetime
 
 class User(db.Model):
@@ -83,21 +85,41 @@ class Post(db.Model):
 
 
 
-# class Comment(db.Model):
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
+    post_id =db.Column(db.Integer,db.ForeignKey('posts.id'))
+    comment = db.Column(db.Text(),nullable = False)
+    posted=db.Column(db.DateTime,default=datetime.utcnow)
+    comment_by = db.Column(db.String)
 
 
-#     __tablename__ = 'comments'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     comment = db.Column(db.Text(),nullable = False)
-#     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
-#     post_id =db.Column(db.Integer,db.ForeignKey('posts.id')
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def delete_comment(cls,id):
+        gone =Comment.query.filter_by(id = id).first()
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def clear_comments(cls):
+        commennts = Comment.query.filter_by(post_id =id).all()
+        return comments
+
+
+    @classmethod
+    def get_comments(cls,id):
+        commennts = Comment.query.filter_by(post_id =id).all()
+        return comments
     
+
     
-    
-
-
-
 
 
 
