@@ -27,6 +27,28 @@ def get_quotes():
     return quotes_results
 
 
+def process_results(quotes_list):
+    '''
+    Function  that processes the quotes result and transform them to a list of Objects
+    Args:
+        quotes_list: A list of dictionaries that contain quotes details
+    Returns :
+        quotes_results: A list of quotes objects
+    '''
+    quotes_results = []
+    for quotes_item in quotes_list:
+        id = quotes_item.get('id') 
+        author = quotes_item.get('author')
+        quote = quotes_item.get('quote)
+        permalink = quotes_item.get('permalink')
+     
+        
+        quotes_object = quotes(id,author,quote,permalink)
+        quotes_results.append(quotes_object)
+
+    return quotes_results
+
+
 
 
 
