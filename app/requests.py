@@ -39,7 +39,7 @@ def process_results(quotes_list):
     for quotes_item in quotes_list:
         id = quotes_item.get('id') 
         author = quotes_item.get('author')
-        quote = quotes_item.get('quote)
+        quote = quotes_item.get('quote')
         permalink = quotes_item.get('permalink')
      
         
