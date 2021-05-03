@@ -15,7 +15,7 @@ def index():
     posts = Post.query.all()
     
 
-    title = 'GZRU | Home'
+    title = 'E-BLOG | Home'
     quotes = requests.get("http://quotes.stormconsultancy.co.uk/random.json").json()
     # random_quotes = get_quotes
     return render_template('index.html', title=title,posts=posts, quotes = quotes)
