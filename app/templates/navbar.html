@@ -1,16 +1,13 @@
 <nav class="navbar sticky-top " style="background: rgb(52, 71, 77); font-size: 20px;">
     <div class="container navbr">
-
            
-            <a class="nav-text-add" href="/create_new"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp; add new pitch</a>
-           
-            <a class="nav-link" href="{{url_for('main.index')}}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp; Home</a>
+            <a class="nav-link" href="{{url_for('main.index')}}" style="position: left;"><i class="fa fa-home" aria-hidden="true"></i>&nbsp; Home</a>
             
 
         <ul class="nav navbar-nav navbar-right">
             
             {% if current_user.is_authenticated %}
-            <li><a  href="{{url_for('main.profile',name=current_user.username)}}"><i class="far fa-user"></i>&nbsp; My account</a></li>
+            <li><a  href="{{url_for('main.profile',uname=current_user.username)}}"><i class="far fa-user"></i>&nbsp; My account</a></li>
             <li><a href="{{url_for('auth.logout')}}" class="lgn"><i class="fas fa-sign-out-alt"></i>&nbsp; Sign out</a></li>
             {% else %}
             <li><a href="{{url_for('auth.login')}}" class="lgn"><i class="fas fa-sign-in-alt"></i>&nbsp; Sign in</a></li>

@@ -14,6 +14,7 @@ login_manager.login_view = 'auth.login'
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 mail = Mail()
+photos = UploadSet('photos',IMAGES)
 
 
 app = Flask(__name__)
@@ -28,9 +29,14 @@ def create_app(config_name):
     login_manager.init_app(app)
     mail.init_app(app)
 
+    configure_uploads(app,photos)
+
     # Registering the blueprint
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
 
     # Will add the views and forms
 

@@ -1,8 +1,8 @@
-from flask import render_template,redirect,url_for,flash,request
+from flask import Flask,render_template,redirect,url_for,flash,request
 from ..models import User
 from .forms import RegistrationForm,LoginForm
 from .. import db
-from flask_login import login_user,logout_user,login_required
+from flask_login import login_user,logout_user,login_required,current_user
 from . import auth
 from ..models import User
 from ..email import mail_message
@@ -17,7 +17,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to my blog","email/welcome_user",user.email,user=user)
+        # mail_message("Welcome to my blog","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
         title = "New Account"
@@ -34,7 +34,8 @@ def login():
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
 
-        flash('Invalid username or Password')
+        else:
+            flash('Invalid username or Password')
 
     title = "login"
     return render_template('auth/login.html',login_form = login_form,title=title)
