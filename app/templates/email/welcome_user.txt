@@ -1,0 +1,4 @@
+Hey {{user.username}}
+First off, lemme  give you a big hug through words and officially welcome you!
+
+Welcome to my blog  this blog is all about being a programmer who loves taking to her laptop so enjoy every bits chaoo

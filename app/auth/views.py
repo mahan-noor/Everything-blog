@@ -5,6 +5,7 @@ from .. import db
 from flask_login import login_user,logout_user,login_required
 from . import auth
 from ..models import User
+from ..email import mail_message
 
 
 
