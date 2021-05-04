@@ -1,11 +1,11 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..request import get_quotes
+from ..requests import get_quotes
 from ..models import Comment,User,Post
 from .forms import CommentForm,UpdateProfile,PostForm
 from flask_login import login_required,current_user
 import datetime
-from .. import db,photos
+from .. import db
 import requests
 
 
